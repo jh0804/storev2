@@ -1,21 +1,21 @@
 {{> layout/header}}
 
 <div class="container mt-2">
-  <div class="mt-4 p-5 bg-light text-dark rounded-4">
-    <h1>상품등록 페이지</h1>
-    <form action="#" method="post">
-      <div class="mb-3 mt-3">
-        <input type="text" class="form-control" placeholder="상품명을 입력하세요" name="name">
-      </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="재고를 입력하세요" name="stock">
-      </div>
-      <div class="mb-3 mt-3">
-        <input type="text" class="form-control" placeholder="가격을 입력하세요" name="price">
-      </div>
-      <button type="submit" class="btn btn-primary">상품등록</button>
-    </form>
-  </div>
+    <div class="mt-4 p-5 bg-light text-dark rounded-4">
+        <h1>상품등록 페이지</h1>
+        <form action="/store/save" method="post">
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="상품명을 입력하세요" name="name" value="오렌지">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="재고를 입력하세요" name="stock" value="30">
+            </div>
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="가격을 입력하세요" name="price" value="4000">
+            </div>
+            <button type="submit" class="btn btn-primary">상품등록</button>
+        </form>
+    </div>
 </div>
 
 </body>

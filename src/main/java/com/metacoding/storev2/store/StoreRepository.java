@@ -30,4 +30,12 @@ public class StoreRepository {
         return listDTOs;
 
     }
+
+    public void save(String name, Integer stock, Integer price) {
+        Query query = em.createNativeQuery("insert into store_tb(name, stock, price) values (?, ?, ?)");
+        query.setParameter(1, name);
+        query.setParameter(2, stock);
+        query.setParameter(3, price);
+        query.executeUpdate();
+    }
 }
