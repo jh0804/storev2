@@ -24,4 +24,14 @@ public class StoreService {
     public Store 상품상세보기(int id) {
         return storeRepository.findById(id);
     }
+
+    @Transactional
+    public void 상품삭제(int id) {
+        // 1. 상품 있는지 확인
+        Store store = storeRepository.findById(id);
+        // 2. 없으면 exception
+        if (store == null) throw new RuntimeException("상품이 없으므로 삭제할 수 없습니다.");
+        // 3. 있으면 삭제
+        storeRepository.deleteById(id);
+    }
 }

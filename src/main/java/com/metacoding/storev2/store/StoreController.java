@@ -49,9 +49,19 @@ public class StoreController {
     }
 
     @GetMapping("/store/{id}")
-    public String detail(@PathVariable int id, HttpServletRequest request) {
+    public String detail(@PathVariable("id") int id, HttpServletRequest request) {
         Store store = storeService.상품상세보기(id);
         request.setAttribute("model", store);
         return "store/detail";
+    }
+
+    @PostMapping("/store/{id}/delete")
+    public String delete(@PathVariable("id") int id) {
+        // 로그인한 유저만 상품등록 가능하다.
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if (sessionUser == null) throw new RuntimeException("로그인 후 사용해주세요");
+
+        storeService.상품삭제(id);
+        return "redirect:/store";
     }
 }
