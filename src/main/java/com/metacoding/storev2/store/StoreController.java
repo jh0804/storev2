@@ -57,7 +57,7 @@ public class StoreController {
 
     @PostMapping("/store/{id}/delete")
     public String delete(@PathVariable("id") int id) {
-        // 로그인한 유저만 상품등록 가능하다.
+        // 로그인한 유저만 상품삭제 가능하다.
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) throw new RuntimeException("로그인 후 사용해주세요");
 
@@ -67,7 +67,7 @@ public class StoreController {
 
     @GetMapping("/store/{id}/update-form")
     public String updateForm(@PathVariable("id") int id, HttpServletRequest request) {
-        // 로그인한 유저만 상품등록 가능하다.
+        // 로그인한 유저만 상품수정 가능하다.
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) throw new RuntimeException("로그인 후 사용해주세요");
 
@@ -79,7 +79,7 @@ public class StoreController {
 
     @PostMapping("/store/{id}/update")
     public String update(@PathVariable("id") int id, StoreRequest.UpdateDTO updateDTO) {
-        // 로그인한 유저만 상품등록 가능하다.
+        // 로그인한 유저만 상품수정 가능하다.
         User sessionUser = (User) session.getAttribute("sessionUser");
         if (sessionUser == null) throw new RuntimeException("로그인 후 사용해주세요");
 
