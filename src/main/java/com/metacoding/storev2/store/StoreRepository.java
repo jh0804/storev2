@@ -38,4 +38,10 @@ public class StoreRepository {
         query.setParameter(3, price);
         query.executeUpdate();
     }
+
+    public Store findById(int id) {
+        Query query = em.createNativeQuery("select * from store_tb where id = ?", Store.class);
+        query.setParameter(1, id);
+        return (Store) query.getSingleResult();
+    }
 }

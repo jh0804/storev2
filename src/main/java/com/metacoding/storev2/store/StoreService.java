@@ -20,4 +20,8 @@ public class StoreService {
     public void 상품등록(StoreRequest.SaveDTO saveDTO) {
         storeRepository.save(saveDTO.getName(), saveDTO.getStock(), saveDTO.getPrice());
     }
+
+    public Store 상품상세보기(int id) {
+        return storeRepository.findById(id);
+    }
 }

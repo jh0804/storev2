@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -45,5 +46,12 @@ public class StoreController {
         storeService.상품등록(saveDTO);
 
         return "redirect:/store";
+    }
+
+    @GetMapping("/store/{id}")
+    public String detail(@PathVariable int id, HttpServletRequest request) {
+        Store store = storeService.상품상세보기(id);
+        request.setAttribute("model", store);
+        return "store/detail";
     }
 }
