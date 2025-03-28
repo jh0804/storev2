@@ -64,4 +64,26 @@ public class StoreController {
         storeService.상품삭제(id);
         return "redirect:/store";
     }
+
+    @GetMapping("/store/{id}/update-form")
+    public String updateForm(@PathVariable("id") int id, HttpServletRequest request) {
+        // 로그인한 유저만 상품등록 가능하다.
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if (sessionUser == null) throw new RuntimeException("로그인 후 사용해주세요");
+
+        Store store = storeService.상품상세보기(id);
+        request.setAttribute("model", store);
+
+        return "store/update-form";
+    }
+
+    @PostMapping("/store/{id}/update")
+    public String update(@PathVariable("id") int id, StoreRequest.UpdateDTO updateDTO) {
+        // 로그인한 유저만 상품등록 가능하다.
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if (sessionUser == null) throw new RuntimeException("로그인 후 사용해주세요");
+
+        storeService.상품수정(id, updateDTO);
+        return "redirect:/store/" + id;
+    }
 }

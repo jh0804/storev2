@@ -34,4 +34,14 @@ public class StoreService {
         // 3. 있으면 삭제
         storeRepository.deleteById(id);
     }
+
+    @Transactional
+    public void 상품수정(int id, StoreRequest.UpdateDTO updateDTO) {
+        // 1. 상품 있는지 확인
+        Store store = storeRepository.findById(id);
+        // 2. 없으면 exception
+        if (store == null) throw new RuntimeException("상품이 없으므로 수정할 수 없습니다.");
+        // 3. 있으면 수정
+        storeRepository.updateById(id, updateDTO.getName(), updateDTO.getStock(), updateDTO.getPrice());
+    }
 }
