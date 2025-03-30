@@ -17,8 +17,8 @@
     </div>
 
     <div class="mt-4 p-5 bg-light text-dark rounded-4">
-        <form action="/order/save">
-            <input type="hidden" value="{{model.id}}">
+        <form action="/order/save" method="post">
+            <input type="hidden" value="{{model.id}}" name ="storeId">
             <input type="text" placeholder="개수를 입력하세요" name="qty">
             <button type="submit" class="btn btn-outline-primary">구매</button>
         </form>
